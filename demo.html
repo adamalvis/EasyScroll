@@ -7,25 +7,30 @@
 </head>	
 <body>
 	<div class="container">
-	<h2>Scroll down!</h2>
-		<div id="box">Not triggered</div>
+	<h2><a href="#box" class="scrollto">Scroll down!</a></h2>
+		<div id="box">not triggered...</div>
 	</div>
+	<script src="js/jquery-1.11.2.min.js"></script>
 	<script src="EasyScroll.js"></script>
 	<script>
 		(function() {
 			
-			var box = document.getElementById('box');
+			var box = $('#box');
 
-			box.scrollTrigger({
+			box.scrollEvent({
+				centered: true,
 				func: function() {
-					box.style.backgroundColor = 'green';
-					box.innerHTML = 'Triggered!';
+					box.css({
+						backgroundColor: 'green',
+					});	
+					box.html('Triggered!');
 				},
 				reset: function() {
-					box.style.backgroundColor = '#000';
-					box.innerHTML = 'Not triggered.';
-				},
-				centered: true
+					box.css({
+						backgroundColor: '#000',
+					});	
+					box.html('not triggered');
+				}
 			});
 
 		})();

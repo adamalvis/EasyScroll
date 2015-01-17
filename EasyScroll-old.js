@@ -1,6 +1,10 @@
 'use strict';
 
-$.fn.scrollEvent = function() {
+//
+//	ScrollTrigger Module
+//
+Object.prototype.scrollTrigger = function() {
+
 	// set defaults
 	var props = {
 		elem: this,
@@ -26,9 +30,9 @@ $.fn.scrollEvent = function() {
 
 	var methods = {
 		init: function() {
-			$(window).scroll(function() {
+			window.onscroll = function() {
 
-				var fromTop = $(window).scrollTop(),
+				var fromTop = window.pageYOffset,
 					trigger = methods.setTrigger();
 
 				// Check if scroll depth is more than trigger
@@ -44,14 +48,14 @@ $.fn.scrollEvent = function() {
 					}
 				}
 
-			});
+			};
 		},
 		setTrigger: function() {
 
 			var trigger,
-				elemOffset = props.elem.offset().top,
-				winHeight = $(window).height(),
-				halfElemHeight = props.elem.height() / 2;
+				elemOffset = props.elem.offsetTop,
+				winHeight = window.innerHeight,
+				halfElemHeight = props.elem.offsetHeight / 2;
 
 			trigger = elemOffset - (winHeight / 2);
 
@@ -70,6 +74,7 @@ $.fn.scrollEvent = function() {
 		}
 	};
 
-	// initiate ScrollEvents
+	// initiate ScrollTrigger
 	methods.init();
-}
+	
+};
