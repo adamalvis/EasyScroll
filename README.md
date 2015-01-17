@@ -1,2 +1,2 @@
-# ScrollTrigger
-Simple module that executes functions when specified elements are in view
+# EasyScroll
+Simple module for easily triggering events on scroll and enabling smooth scroll to elements.
