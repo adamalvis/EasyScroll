@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ScrollTrigger Demo</title>
+	<link rel="stylesheet" href="css/demo.css">
+</head>	
+<body>
+	<div class="container">
+	<h2>Scroll down!</h2>
+		<div id="box">Not triggered</div>
+	</div>
+	<script src="js/ScrollTrigger.js"></script>
+	<script>
+		(function() {
+			
+			var box = document.getElementById('box');
+
+			box.scrollTrigger({
+				func: function() {
+					box.style.backgroundColor = 'green';
+					box.innerHTML = 'Triggered!';
+				},
+				reset: function() {
+					box.style.backgroundColor = '#000';
+					box.innerHTML = 'Not triggered.';
+				}
+			});
+
+		})();
+	</script>
+</body>
+</html>
