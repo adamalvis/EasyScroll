@@ -7,9 +7,9 @@
 			elem: this,
 			func: function() {},
 			reset: function() {},
-			status: 0, // 0 = not triggered, 1 = triggered
-			offset: 0,
-			delay: 0
+			triggered: false, 
+			centered: false,
+			offset: 0
 		};
 
 		// accepts object or single function
@@ -34,14 +34,14 @@
 
 					// Check if scroll depth is more than trigger
 					if(fromTop >= trigger) {
-						if(status == 0) {
+						if(!props.triggered) {
 							props.func();
-							status = 1;
+							props.triggered = true;
 						}
 					} else {
-						if(status == 1) {
+						if(props.triggered) {
 							props.reset();
-							status = 0;
+							props.triggered = false;
 						}
 					}
 
@@ -51,9 +51,20 @@
 
 				var trigger,
 					elemOffset = props.elem.offsetTop,
-					winHeight = window.innerHeight;
+					winHeight = window.innerHeight,
+					halfElemHeight = props.elem.offsetHeight / 2;
 
 				trigger = elemOffset - (winHeight / 2);
+
+				// subtracts half of element height to center
+				if(props.centered) {
+					trigger = trigger + halfElemHeight;
+				}
+
+				// adjusts according to offset
+				if(props.offset) {
+					trigger = trigger + props.offset;
+				}
 
 				return trigger;
 
