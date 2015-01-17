@@ -1,2 +1,2 @@
 # ScrollTrigger
-Simple module that triggers a function when an element reaches the target area of the viewport.
+Simple module that executes functions when specified elements are in view
