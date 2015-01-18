@@ -72,4 +72,45 @@ $.fn.scrollEvent = function() {
 
 	// initiate ScrollEvents
 	methods.init();
-}
+};
+
+var ScrollTo = (function() {
+
+	var props = {
+		speed: 1000,
+		offset: 0,
+		linkClass: '.scrollto'
+	};
+
+	var methods = {
+		init: function() {
+			// accepts object or single function
+			if(typeof arguments[0] === 'object') {
+				for(var key in arguments[0]) {
+					if(arguments[0].hasOwnProperty(key) && props.hasOwnProperty(key)) {
+						props[key] = arguments[0][key];
+					}
+				}
+			}
+
+			methods.createEvent();
+		},
+		createEvent: function() {
+			// Setup click event and prevent href
+			$(props.linkClass).click(function(e) {
+				e.preventDefault();
+				methods.scroll($(this).attr('href'));
+			});
+		},
+		scroll: function(target) {
+			var scrollDistance = $(target).offset().top + props.offset;
+
+			$('html,body').animate({
+				scrollTop: scrollDistance
+			}, props.speed);
+		}
+	}
+
+	return methods;
+
+})(ScrollTo || {});
