@@ -1,0 +1,66 @@
+// ROTATE MIXINS
+@mixin Rotate($radius) {
+	-webkit-transform: rotate($radius);
+    -ms-transform: rotate($radius);
+    transform: rotate($radius);
+}
+
+@mixin rotateX($deg) {
+	transform:rotateX($deg);
+	-ms-transform:rotateX($deg);
+	-webkit-transform:rotateX($deg);
+}
+
+// OPACITY
+@mixin Opacity($deg) {
+	-moz-opacity: $deg;
+	-khtml-opacity: $deg;
+	opacity: $deg;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$deg * 100})";
+	filter: alpha(opacity=($deg * 100));
+}
+
+@mixin animation ($duration, $animation) {
+	-webkit-animation-duration: $duration;
+	-webkit-animation-name: $animation;
+	-webkit-animation-fill-mode: forwards;
+
+	-moz-animation-duration: $duration;
+	-moz-animation-name: $animation;
+	-moz-animation-fill-mode: forwards;
+
+	-o-animation-duration: $duration;
+	-o-animation-name: $animation;
+	-o-animation-fill-mode: forwards;
+
+	animation-duration: $duration;
+	animation-name: $animation;
+	animation-fill-mode: forwards;
+}
+
+@mixin keyframe ($animation_name) {
+	@-webkit-keyframes $animation_name {
+		@content;
+	}
+	 
+	@-moz-keyframes $animation_name {
+		@content;
+	}
+	 
+	@-o-keyframes $animation_name {
+		@content;
+	}
+	 
+	@keyframes $animation_name {
+		@content;
+	}
+
+}
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}

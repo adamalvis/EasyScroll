@@ -3,12 +3,13 @@
 $.fn.scrollEvent = function() {
 	// set defaults
 	var props = {
-		elem: this,
+		elem: $(this),
 		func: function() {},
 		reset: function() {},
 		triggered: false, 
 		centered: false,
-		offset: 0
+		offset: 0,
+		waypoint: ''
 	};
 
 	// accepts object or single function
@@ -53,11 +54,11 @@ $.fn.scrollEvent = function() {
 				winHeight = $(window).height(),
 				halfElemHeight = props.elem.height() / 2;
 
-			trigger = elemOffset - (winHeight / 2);
+			trigger = elemOffset;
 
 			// adds half of element height to center
 			if(props.centered) {
-				trigger = trigger + halfElemHeight;
+				trigger = trigger - (winHeight / 2) + halfElemHeight;
 			}
 
 			// adjusts according to offset
@@ -73,6 +74,9 @@ $.fn.scrollEvent = function() {
 	// initiate ScrollEvents
 	methods.init();
 };
+
+
+// ScrollTo Module 
 
 var ScrollTo = (function() {
 
@@ -103,7 +107,7 @@ var ScrollTo = (function() {
 			});
 		},
 		scroll: function(target) {
-			var scrollDistance = $(target).offset().top + props.offset;
+			var scrollDistance = $(target).offset().top - props.offset;
 
 			$('html,body').animate({
 				scrollTop: scrollDistance
