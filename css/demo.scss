@@ -39,10 +39,17 @@ section {
 
 
 // Hide elements before scroll
-#section2, #section3, #section4, #section5 {
+#section2, #section4 {
 	.container {
 		opacity: 0;
 		left: -100px;
+	}
+}
+
+#section3, #section5 {
+	.container {
+		opacity: 0;
+		right: -100px;
 	}
 }
 

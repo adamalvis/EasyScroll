@@ -88,9 +88,14 @@ section .container p {
   margin-bottom: 20px;
 }
 
-#section2 .container, #section3 .container, #section4 .container, #section5 .container {
+#section2 .container, #section4 .container {
   opacity: 0;
   left: -100px;
+}
+
+#section3 .container, #section5 .container {
+  opacity: 0;
+  right: -100px;
 }
 
 #section2, #section4 {
