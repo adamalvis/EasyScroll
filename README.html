@@ -1,2 +1,33 @@
 <h1 id="easyscroll">EasyScroll</h1>
-<p>Simple module for easily triggering events on scroll and enabling smooth scroll to elements.</p>
+<p>A simple module for making scrolling features easy to implement</p>
+<hr>
+<h2 id="scrollevents">ScrollEvents</h2>
+<p>Allows any function to be triggered when selected element enters the targeted area of the viewport</p>
+<p>To create an event simply call the scrollEvents() function on the target element and pass in a callback function:</p>
+<pre><code>$(&#39;SOME_ELEMENT&#39;).scrollEvent(function () {
+    // Event to trigger
+});
+</code></pre><p>You can further customize your event triggers by passing in some parameters.</p>
+<pre><code>section2.scrollEvent({
+    func: function () {
+        // Function to be triggered when element is in view
+    },
+    reset: function () {
+        // Function to be triggered when user scrolls back up past the element
+    },
+    centered: true, // Sets function to trigger when element is in center of viewport
+    offset: 100px // Number of pixels to move trigger from original point
+);
+</code></pre><h2 id="scrollto">ScrollTo</h2>
+<p>Easily allows smooth scrolling to any element.</p>
+<p>First initialize ScrollTo</p>
+<pre><code>ScrollTo.init();
+</code></pre><p>Then you can create a smooth scroll link by adding the &#39;scrollto&#39; class and pointing the href attribute to the element you wish to scroll to</p>
+<pre><code>&lt;a class=&quot;scrollto&quot; href=&quot;#some_element&quot;&gt;Scroll Down&lt;/a&gt;
+</code></pre><p>Scroll to also has a few options that can be edited by passing in some parameters to the init function</p>
+<pre><code>ScrollTo.init({
+    speed: 500, // sets scroll speed in ms
+    offset: 200, // sets endpoint offset in px
+    linkClass: &#39;.new-class&#39; // Changes the class of scrollto links
+});
+</code></pre>
