@@ -51,50 +51,26 @@
 	<script>
 		(function() {
 
-			var section2 = $('#section2'),
-				section3 = $('#section3'),
-				section4 = $('#section4'),
-				section5 = $('#section5');
+			var sections = $('section');
 
 			// Set section triggers
-			section2.scrollEvent({
-				func: function () {
-					section2.find('.container').animate({
-						left: '0px',
-						opacity: '1'
-					}, 500);
-				},
-				centered: true
-			});
-
-			section3.scrollEvent({
-				func: function () {
-					section3.find('.container').animate({
-						right: '0px',
-						opacity: '1'
-					}, 500);
-				},
-				centered: true
-			});
-
-			section4.scrollEvent({
-				func: function () {
-					section4.find('.container').animate({
-						left: '0px',
-						opacity: '1'
-					}, 500);
-				},
-				centered: true
-			});
-
-			section5.scrollEvent({
-				func: function () {
-					section5.find('.container').animate({
-						right: '0px',
-						opacity: '1'
-					}, 500);
-				},
-				centered: true
+			sections.each(function () {
+				$(this).scrollEvent({
+					func: function (elem) {
+						elem.find('.container').animate({
+							left: '0px',
+							opacity: '1'
+						}, 500);
+					},
+					reset: function (elem) {
+						elem.find('.container').animate({
+							left: '-100px',
+							opacity: '0'
+						}, 500);
+					},
+					offset: 0,
+					sections: true,
+				});
 			});
 
 			// Initiate ScrollTo
